@@ -1,0 +1,36 @@
+ <!DOCTYPE html>
+ <html>
+ <head>
+ 	<title>Index</title>
+ 	<meta charset="utf-8">
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/css/common.css">
+ </head>
+
+ <body>
+ <div id="header">
+ 	<a href="__URL__/index">
+ 		<h2>LibraryManagementSystem</h2>
+ 	</a>
+ 	<hr>
+ 	<div id="search">
+ 		 
+ 		 <form action="__URL__/search" method="get">
+ 		 	<input type="text" name="name">
+ 		 	<input type="submit" value="搜索">
+ 		 </form>
+ 		
+ 		<a href="__URL__/add_book"><span>add</span></a>
+ 	</div>
+ </div>
+
+ <div class="main">
+	 <img src="xx.png">
+	<p>{$title}</p>
+	<p>{$author.name}</p>
+	<p>{$publisher}</p>
+	<p>{$publishdate}</p>
+	<p>{$price}</p>
+	<p>{$isbn}</p>
+ </div>
+ </body>
+ </html>
