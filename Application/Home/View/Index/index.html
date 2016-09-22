@@ -1,29 +1,7 @@
- <!DOCTYPE html>
- <html>
- <head>
- 	<title>Index</title>
- 	<meta charset="utf-8">
- 	<link rel="stylesheet" type="text/css" href="__PUBLIC__/css/common.css">
- </head>
-
- <body>
- <div id="header">
- 	<a href="__URL__/index">
- 		<h2>LibraryManagementSystem</h2>
- 	</a>
- 	<hr>
- 	<div id="search">
- 		 
- 		 <form action="__URL__/search" method="get">
- 		 	<input type="text" name="name">
- 		 	<input type="submit" value="搜索">
- 		 </form>
- 		
- 		<a href="__URL__/add_book"><span>add</span></a>
- 	</div>
- </div>
- <div>
+<extend name="Public:template" />
+<block name="content">
  	<div id="main">
+ 	<p>{$info}</p>
 	 	<volist name="books" id="vo">
 	 	<a href="__URL__/show_book?id={$vo.isbn}">
 	 	<div class="book">
@@ -32,7 +10,5 @@
 	 	</div></a>
 		</volist>
  	</div>
-
- </div>
- </body>
- </html>
+</block>
+ 

@@ -1,0 +1,18 @@
+<extend name="Public:template" />
+<block name="content">
+	 <div class="main">
+	 <p>{$info}</p>
+		 <form action="__URL__/insert?type=2" method="post">
+			 name:<input type="text" name="Name"  value="{$Think.get.name}">
+			 age:<input type="text" name="Age">
+			 country:<input type="text" name="Country">
+			 <input type="hidden" name="Title" value="{$Think.get.Title}">
+			 <input type="hidden" name="Publisher" value="{$Think.get.Publisher}">
+			 <input type="hidden" name="Price" value="{$Think.get.Price}">
+			 <input type="hidden" name="ISBN" value="{$Think.get.ISBN}">
+			 <input type="hidden" name="PublishDate" value="{$Think.get.PublishDate}">
+
+			 <input type="submit" value="提交">
+		 </form>
+	</div>
+</block>
