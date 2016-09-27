@@ -1,16 +1,81 @@
 <extend name="Public:template" />
-<block name="content">
-	 <div class="main">
-	 <p>{$info}</p>
-		 <img src="xx.png">
-		 <form action="__URL__/insert?type=1" method="post">
-			 title:<input type="text" name="Title">
-			 name:<input type="text" name="name">
-			 publisher:<input type="text" name="Publisher">
-			 price:<input type="text" name="Price">
-			 isbn:<input type="text" name="ISBN">
-			 publishdate:<input type="text" name="PublishDate">
-			 <input type="submit" value="提交">
-		 </form>
-	</div>
+
+<block name='externLinks'>
+    <script type="text/javascript">
+$(function() {
+    $(".btn-edit-submit").click(function(){
+         $.ajax({url:"__MODULE__/Form/add_book",
+            type: 'GET',
+            data:$('form').serialize(),
+            contentType: "application/json; charset=utf-8",
+            success: function(data){
+                swal({
+                    title:"添加成功",
+                    type:"success",
+                });
+            }
+         })
+    })
+    $(".in_author").blur(function(){
+    	if ($(this).val() != '') {
+			$.ajax({url:"__MODULE__/Form/ha",
+				type: 'GET',
+				data:{"name":$(this).val()},
+				contentType: "application/json; charset=utf-8",
+				success: function(data){
+					if (data=='0') {
+						swal('没有该作者',"请先添加作者信息");
+					}
+				}
+			})
+    	}
+
+    })
+
+})
+
+    </script>
+</block>
+
+<block name="main">
+    <div id="main" class="pure-u-1">
+        <div class="email-content">
+            <div class="email-content-header pure-g">
+                <div class="pure-u-1-2">
+                    <h1 class="email-content-title">新增图书</h1>
+                </div>
+
+                <div class="email-content-controls pure-u-1-2">
+                    <a href="__URL__/Index"><button class="secondary-button pure-button">返回</button></a>
+                </div>
+            </div>
+
+            <div class="email-content-body">
+
+                <form class="pure-form pure-form-stacked">
+                    <fieldset>
+                        <label>书名</label>
+                        <input type="text" name="Title">
+                        <label>作者</label>
+                        <input class="in_author" type="text" name="name">
+                        <label>价格</label>
+                        <input type="text" name="Price">
+                        <label>出版社</label>
+                        <input type="text" name="Publisher">
+                        <label>出版日期</label>
+                        <input type="text" name="PublishDate">
+                        <label>ISBN编号</label>
+                        <input type="text" name="ISBN">
+                        <a class="pure-button btn-edit-submit" href="#">提交</a>
+                        <!-- <button class="pure-button btn-edit-submit"></button> -->
+                    </fieldset>
+                </form>
+                <p>说明：<br>
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                </p>
+
+            </div>
+        </div>
+    </div>
 </block>

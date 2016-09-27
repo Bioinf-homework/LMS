@@ -1,14 +1,36 @@
 <extend name="Public:template" />
-<block name="content">
- 	<div id="main">
- 	<p>{$info}</p>
-	 	<volist name="books" id="vo">
-	 	<a href="__URL__/show_book?id={$vo.isbn}">
-	 	<div class="book">
-	 		<img src="xx.png">
-	 		{$vo.title}:{$vo.price}<br/>
-	 	</div></a>
-		</volist>
- 	</div>
+
+
+
+<block name="main">
+
+<script type="text/javascript">
+
+</script>
+
+    <div id="main" class="pure-u-1">
+        <div class="email-content">
+            <div class="email-content-header pure-g">
+                <div class="pure-u-1-2">
+                
+                    <h1 class="email-content-title">                  
+                        <present name="author">
+                        {$author}的书籍
+                        <else /> 
+                        这个图书管理系统的首页
+                        </present> 
+                    </h1>
+
+
+                </div>
+            </div>
+
+            <div class="email-content-body">
+                <p>简介：<br>
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                </p>
+            </div>
+        </div>
+    </div>
 </block>
- 

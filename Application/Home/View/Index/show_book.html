@@ -1,13 +1,53 @@
 <extend name="Public:template" />
-<block name="content">
-	 <div class="main">
-	 <p>{$info}</p>
-		 <img src="xx.png">
-		<p>{$title}</p>
-		<p>{$author.name}</p>
-		<p>{$publisher}</p>
-		<p>{$publishdate}</p>
-		<p>{$price}</p>
-		<p>{$isbn}</p>
-	 </div>
+
+<block name='externLinks'>
+    <script type="text/javascript">
+$(function() {
+    $(".btn-del").click(function(){
+         $.get("__MODULE__/Form/del_book?id={$isbn}",function(data){
+             swal({
+                title:data,
+                type:"error"
+             });
+         })
+    })
+})
+    </script>
 </block>
+
+<block name="main">
+    <div id="main" class="pure-u-1">
+        <div class="email-content">
+            <div class="email-content-header pure-g">
+                <div class="pure-u-1-2">
+                    <h1 class="email-content-title">{$title}</h1>
+                    <p class="email-content-subtitle">
+                        作者：<span>{$author.name}</span>
+                    </p>
+                </div>
+
+                <div class="email-content-controls pure-u-1-2">
+                    <a href="__URL__/edit_book?id={$isbn}"><button class="secondary-button pure-button">修改</button></a>
+                    <button class="secondary-button pure-button btn-del">删除</button>
+                </div>
+            </div>
+
+            <div class="email-content-body">
+				<p>价格：<br>
+				{$price}￥</p>
+				<p>出版社：<br>
+				{$publisher}</p>
+				<p>出版日期：<br>
+				{$publishdate}</p>
+
+				<p>ISBN编号：<br>
+				{$isbn}</p>
+                <p>简介：<br>
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                </p>
+            </div>
+        </div>
+    </div>
+</block>
+

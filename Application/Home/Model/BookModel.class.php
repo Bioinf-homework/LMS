@@ -14,7 +14,7 @@ class BookModel extends RelationModel{
     public function jiaoyan($data)
     {
         # TODO: 输入的字段类型判断
-        dump($data);
+        // dump($data);
         if(empty($data['Publisher'])||empty($data['Price'])||empty($data['Title'])||empty($data['ISBN'])||empty($data['PublishDate'])){
             return False;
         }
@@ -45,6 +45,7 @@ class BookModel extends RelationModel{
                 $data['AuthorId'] = $aid;
                 unset($data['name']);
                 $this->data($data)->add();
+                // TODO:插入失败..处理..
                 return 1;
             }
             else{

@@ -1,30 +1,94 @@
-<!DOCTYPE html>
-<html lang="zh-CN">
+<!doctype html>
+<html lang="en">
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="A layout example that shows off a responsive email layout.">
+
+    <title>图书管理系统 Pure</title>
     <block name="links">
         <include file="Public:link" />
     </block>
+
     <block name="externLinks">
     </block>
+
 </head>
 <body>
-	 <div id="header">
-	 	<a href="__URL__/index">
-	 		<h2>LibraryManagementSystem</h2>
-	 	</a>
-	 	<hr>
-	 	<div id="search">
-	 		 
-	 		 <form action="__URL__/search" method="get">
-	 		 	<input type="text" name="name">
-	 		 	<input type="submit" value="搜索">
-	 		 </form>
-	 		
-	 		<a href="__URL__/add_book"><span>add</span></a>
-	 	</div>
-	 </div>
 
-    <block name="content">
+
+<div id="layout" class="content pure-g">
+    <div id="nav" class="pure-u">
+        <a href="#" class="nav-menu-button">Menu</a>
+
+        <div class="nav-inner">
+            <a href="__URL__/index"><button class="primary-button pure-button">图书管理系统</button></a>
+
+            <div class="pure-menu">
+                <ul class="pure-menu-list">
+                    <li class="pure-menu-item"><a href="__URL__/index" class="pure-menu-link">Index</a></li>
+                    <li class="pure-menu-item"><a href="__URL__/add_book" class="pure-menu-link">Add</a></li>
+                    <li class="pure-menu-item"><a href="#" class="pure-menu-link menu-s">Search</a></li>
+                    <li class="pure-menu-item"><a href="#" class="pure-menu-link">Roll</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+
+<block name="list">
+    <div id="list" class="pure-u-1">
+
+	<volist name="books" id="vo">
+
+        <div class="email-item pure-g">
+            <div class="pure-u">
+                <img class="email-avatar" height="64" width="64" src="__PUBLIC__/img/book.png" >
+            </div>
+
+            <div class="pure-u-3-4">
+                <a href="__URL__/show_book?id={$vo.isbn}"> 
+                <h4 class="email-subject">{$vo.title}</h4></a>
+                <p class="email-desc">
+                    {$vo.price}￥
+                </p>
+            </div>
+        </div>
+        <!-- </a> -->
+	</volist>
+
+    </div>
+
+</block>
+
+
+<block name="main">
     </block>
+
+
+
+</div>
+
+
+<script src="__PUBLIC__/js/yui-min.js"></script>
+
+<script>
+    YUI().use('node-base', 'node-event-delegate', function (Y) {
+
+        var menuButton = Y.one('.nav-menu-button'),
+            nav        = Y.one('#nav');
+
+        // Setting the active class name expands the menu vertically on small screens.
+        menuButton.on('click', function (e) {
+            nav.toggleClass('active');
+        });
+
+        // Your application code goes here...
+
+    });
+</script>
+
+
+
 </body>
+</html>
