@@ -1,3 +1,5 @@
 # tp
 Runtime
 ThinkPHP/*
+# phpstorm
+.idea/*
