@@ -22,21 +22,7 @@ class BookModel extends RelationModel{
 
         return True;
     }
-    public function addw($data)
-    {
-        $author = array(
-            'Name' => $data['Name'],
-            'Age' => $data['Age'],
-            'Country' => $data['Country']
-            );
-        $aid = D("Author")->add($author);
 
-        unset($data['Name']);
-        unset($data['Age']);
-        unset($data['Country']);
-        $data['AuthorId'] = $aid;
-        $this->add($data);
-    }
     public function addbook($data)
     {
         if($this->jiaoyan($data)){

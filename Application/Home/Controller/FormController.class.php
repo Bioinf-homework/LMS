@@ -15,15 +15,21 @@ class FormController extends Controller {
 			$this->ajaxReturn("error");
 		}
 	}
-    public function del_book(){
-        $bid = $_GET['id'];
-        // $re = D("Book")->delete($bid);
-        $re = 1;
-        if($re == 1){
-            $this->ajaxReturn("删除成功");
-        }
-        $this->ajaxReturn($re);
-    }
+
+	public function add_author(){
+		$data = $_GET;
+		$re = D('Author')->add($data);
+	}
+
+	public function del_book(){
+	    $bid = $_GET['id'];
+	    // $re = D("Book")->delete($bid);
+	    $re = 1;
+	    if($re == 1){
+	        $this->ajaxReturn("删除成功");
+	    }
+	    $this->ajaxReturn($re);
+	}
 	public function edit_book(){
 		$data['ISBN'] = $_GET['id'];
 		$arr = $_GET;
@@ -37,18 +43,17 @@ class FormController extends Controller {
 		}
 	}
 
-    public function ha()
-    {
-    	$
-    	$re = D("Author")->has_writer($name);
-    	$name = $_GET['name'];
-        $model = D("Author");
-        $arr = $model->search($name);
-        if ($arr == False) {
-            $this->ajaxReturn('0');
-        }
-        else{
-        	$this->ajaxReturn('1');
-        }
-    }
+	public function ha()
+	{
+		$re = D("Author")->has_writer($name);
+		$name = $_GET['name'];
+		$model = D("Author");
+		$arr = $model->search($name);
+		if ($arr == False) {
+		    	$this->ajaxReturn('0');
+		}
+		else{
+			$this->ajaxReturn('1');
+		}
+	}
 }

@@ -21,3 +21,8 @@
 ## tp路径...
 http://serverName/index.php（或者其他应用入口文件）/模块/控制器/操作/[参数名/参数值...]
 http://localhost/tp/index.php/home/index/show_book
+
+
+## 存在问题
+- 插入失败的处理
+- 作者重名的处理

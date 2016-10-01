@@ -12,6 +12,13 @@ class IndexController extends Controller {
         $this->display();
     }
 
+    public function all_author(){
+        $arr = D("Author")->select();
+        $this->assign("authors",$arr);
+        // dump($arr);
+        $this->display();
+    }
+
     public function show_book(){
 
         $this->assign("books",$_SESSION['Books']);
@@ -32,11 +39,16 @@ class IndexController extends Controller {
         $this->display();
     }
 
-    public function add_book(){
-        $this->assign("books",$_SESSION['Books']);
-        $this->display();
+    public function add(){
+        $type = $_GET['type'];
+        if (isset($type)) {
+            if ($type == "book") $this->display("add_book");
+            if ($type == "author") $this->display("add_author");
+        }
+        else{
+            $this->display();
+        }
     }
-
 
     public function search()
     {

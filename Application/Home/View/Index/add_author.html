@@ -1,0 +1,62 @@
+<extend name="Public:template" />
+
+<block name='externLinks'>
+    <script type="text/javascript">
+$(function() {
+    $(".btn-edit-submit").click(function(){
+         $.ajax({url:"__MODULE__/Form/add_author",
+            type: 'GET',
+            data:$('form').serialize(),
+            contentType: "application/json; charset=utf-8",
+            success: function(data){
+                swal({
+                    title:"添加成功",
+                    type:"success",
+                });
+            }
+         })
+    })
+})
+
+    </script>
+</block>
+
+
+<block name="main">
+
+    <div id="main" class="pure-u-1">
+        <div class="email-content">
+            <div class="email-content-header pure-g">
+                <div class="pure-u-1-2">
+                    <h1 class="email-content-title">新增作者</h1>
+                </div>
+
+                <div class="email-content-controls pure-u-1-2">
+                    <a href="__URL__/Index"><button class="secondary-button pure-button">返回</button></a>
+                </div>
+            </div>
+
+            <div class="email-content-body">
+
+                <form class="pure-form pure-form-stacked">
+                    <fieldset>
+                        <label>作者</label>
+                        <input class="in_author" type="text" name="name">
+                        <label>年龄</label>
+                        <input type="text" name="Age">
+                        <label>国家</label>
+                        <input type="text" name="Country">
+                        <a class="pure-button btn-edit-submit" href="#">提交</a>
+                        <!-- <button class="pure-button btn-edit-submit"></button> -->
+                    </fieldset>
+                </form>
+                <p>说明：<br>
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                </p>
+
+            </div>
+        </div>
+    </div>
+
+</block>

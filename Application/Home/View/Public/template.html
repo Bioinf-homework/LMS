@@ -27,7 +27,8 @@
             <div class="pure-menu">
                 <ul class="pure-menu-list">
                     <li class="pure-menu-item"><a href="__URL__/index" class="pure-menu-link">Index</a></li>
-                    <li class="pure-menu-item"><a href="__URL__/add_book" class="pure-menu-link">Add</a></li>
+                    <li class="pure-menu-item"><a href="__URL__/all_author" class="pure-menu-link">Author</a></li>
+                    <li class="pure-menu-item"><a href="__URL__/add" class="pure-menu-link">Add</a></li>
                     <li class="pure-menu-item"><a href="#" class="pure-menu-link menu-s">Search</a></li>
                     <li class="pure-menu-item"><a href="#" class="pure-menu-link">Roll</a></li>
                 </ul>
@@ -39,23 +40,76 @@
 <block name="list">
     <div id="list" class="pure-u-1">
 
-	<volist name="books" id="vo">
 
-        <div class="email-item pure-g">
-            <div class="pure-u">
-                <img class="email-avatar" height="64" width="64" src="__PUBLIC__/img/book.png" >
-            </div>
+            <present name="books">
+            <!-- 普通页面显示书籍 -->
+                <volist name="books" id="vo">
 
-            <div class="pure-u-3-4">
-                <a href="__URL__/show_book?id={$vo.isbn}"> 
-                <h4 class="email-subject">{$vo.title}</h4></a>
-                <p class="email-desc">
-                    {$vo.price}￥
-                </p>
-            </div>
-        </div>
-        <!-- </a> -->
-	</volist>
+                    <div class="email-item pure-g">
+                        <div class="pure-u">
+                            <img class="email-avatar" height="64" width="64" src="__PUBLIC__/img/book.png" >
+                        </div>
+                        <div class="pure-u-3-4">
+                            <a href="__URL__/show_book?id={$vo.isbn}"> 
+                            <h4 class="email-subject">{$vo.title}</h4></a>
+                            <p class="email-desc">
+                                {$vo.price}￥
+                            </p>
+                        </div>
+                    </div>
+                </volist>
+            <else /> 
+            <!-- 作者页面 -->
+                <present name="authors">
+
+                <volist name="authors" id="vo">
+                    <div class="email-item pure-g">
+                        <div class="pure-u">
+                            <img class="email-avatar" height="64" width="64" src="__PUBLIC__/img/author.png" >
+                        </div>
+                        <div class="pure-u-3-4">
+                            <a href="__URL__/search?name={$vo.name}&type=show"> 
+                            <h4 class="email-subject">{$vo.name}</h4></a>
+                            <p class="email-desc">
+                                {$vo.age} years old
+                            </p>
+                        </div>
+                    </div>
+                </volist>
+
+                <else />
+                <!-- add功能页面 -->
+                    <div class="email-item pure-g">
+                        <div class="pure-u">
+                            <img class="email-avatar" height="64" width="64" src="__PUBLIC__/img/author.png" >
+                        </div>
+                        <div class="pure-u-3-4">
+                            <a href="__URL__/add?type=author"> 
+                            <h4 class="email-subject">添加作者</h4>
+                            </a>
+                            <p class="email-desc">
+                                为该图书馆添加新书作者吧
+                            </p>
+                        </div>
+                    </div>
+                    <div class="email-item pure-g">
+                        <div class="pure-u">
+                            <img class="email-avatar" height="64" width="64" src="__PUBLIC__/img/book.png" >
+                        </div>
+                        <div class="pure-u-3-4">
+                            <a href="__URL__/add?type=book"> 
+                            <h4 class="email-subject">添加图书</h4>
+                            </a>
+                            <p class="email-desc">
+                                为该图书馆添加新书吧
+                            </p>
+                        </div>
+                    </div>
+
+                </present>
+
+            </present> 
+
 
     </div>
 
