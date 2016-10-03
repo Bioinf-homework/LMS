@@ -3,7 +3,7 @@ namespace Home\Controller;
 use Think\Controller;
 class FormController extends Controller {
 	public function Index(){
-		// $this->show("hello,FormController");
+		$this->show("hello,FormController");
 	}
 	public function add_book(){
 		$data = $_GET;
