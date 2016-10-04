@@ -23,8 +23,7 @@ class FormController extends Controller {
 
 	public function del_book(){
 	    $bid = $_GET['id'];
-	    // $re = D("Book")->delete($bid);
-	    $re = 1;
+	    $re = D("Book")->delete($bid);
 	    if($re == 1){
 	        $this->ajaxReturn("删除成功");
 	    }
