@@ -27,7 +27,7 @@ class FormController extends Controller {
 	    if($re == 1){
 	        $this->ajaxReturn("删除成功");
 	    }
-	    $this->ajaxReturn($re);
+	    $this->ajaxReturn("删除失败");
 	}
 	public function edit_book(){
 		$data['ISBN'] = $_GET['id'];
